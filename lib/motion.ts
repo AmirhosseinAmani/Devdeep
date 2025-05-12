@@ -12,7 +12,11 @@ export type { MotionProps };
 
 interface UseInViewOptions {
   once?: boolean;
-  margin?: string;
+ return framerUseInView(ref, {
+  once,
+  margin: margin as unknown as MarginType,
+});
+
 }
 
 export function useInView(ref: React.RefObject<Element>, options: UseInViewOptions = {}) {
