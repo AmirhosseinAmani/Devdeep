@@ -19,6 +19,6 @@ export function useInView(ref: React.RefObject<Element>, options: UseInViewOptio
   const { once = false, margin = "0px" } = options;
   return framerUseInView(ref, {
     once,
-    margin,
+    margin: margin as any,
   });
 }
