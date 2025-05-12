@@ -12,6 +12,25 @@ export const metadata: Metadata = {
   title: 'Amirhossein Amani | Frontend Developer',
   description: 'Creative Frontend Developer & Computer Engineering Student based in Istanbul, Turkey.',
   keywords: 'frontend developer, web developer, portfolio, nextjs, react',
+  openGraph: {
+    title: 'Amirhossein Amani | Frontend Developer',
+    description: 'Creative Frontend Developer & Computer Engineering Student based in Istanbul, Turkey.',
+    url: 'https://devdeep.site',
+    siteName: 'Devdeep',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Devdeep Logo',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
