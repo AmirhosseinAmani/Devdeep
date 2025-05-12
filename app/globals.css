@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap');
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 270 9% 15%;
+  --card: 0 0% 98%;
+  --card-foreground: 270 9% 15%;
+  --popover: 0 0% 98%;
+  --popover-foreground: 270 9% 15%;
+  --primary: 270 75% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 270 20% 95%;
+  --secondary-foreground: 270 9% 15%;
+  --muted: 270 20% 96%;
+  --muted-foreground: 270 5% 45%;
+  --accent: 270 75% 60%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 270 20% 90%;
+  --input: 270 20% 90%;
+  --ring: 270 75% 60%;
+  --chart-1: 270 75% 60%;
+  --chart-2: 290 70% 55%;
+  --chart-3: 250 70% 55%;
+  --chart-4: 310 70% 55%;
+  --chart-5: 230 70% 55%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 270 25% 8%;
+  --foreground: 0 0% 95%;
+  --card: 270 25% 10%;
+  --card-foreground: 0 0% 95%;
+  --popover: 270 25% 10%;
+  --popover-foreground: 0 0% 95%;
+  --primary: 270 75% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 270 25% 15%;
+  --secondary-foreground: 0 0% 95%;
+  --muted: 270 25% 12%;
+  --muted-foreground: 270 5% 65%;
+  --accent: 270 75% 60%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 270 25% 15%;
+  --input: 270 25% 15%;
+  --ring: 270 75% 60%;
+  --chart-1: 270 75% 60%;
+  --chart-2: 290 70% 55%;
+  --chart-3: 250 70% 55%;
+  --chart-4: 310 70% 55%;
+  --chart-5: 230 70% 55%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.brand-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, hsl(270, 75%, 60%), hsl(290, 70%, 55%));
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px rgba(147, 51, 234, 0.3);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-card {
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(167, 71, 254, 0.05));
+  border: 1px solid rgba(147, 51, 234, 0.2);
+}
