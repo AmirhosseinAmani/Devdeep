@@ -55,9 +55,9 @@ export default function EducationSection() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-12 text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Education & Certifications</h2>
@@ -68,9 +68,9 @@ export default function EducationSection() {
           {/* Education */}
           <div>
             <motion.h3
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -100 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-sm font-medium mb-6 flex items-center gap-2"
             >
               <GraduationCap className="h-4 w-4 text-primary" />
@@ -81,9 +81,9 @@ export default function EducationSection() {
               {education.map((item, index) => (
                 <motion.div
                   key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                  initial={{ opacity: 0, x: -100 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.8, delay: 0.3 + index * 0.15, ease: "easeOut" }}
                   className="relative pl-6"
                 >
                   {/* Timeline line */}
@@ -121,9 +121,9 @@ export default function EducationSection() {
           {/* Certifications */}
           <div>
             <motion.h3
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: 100 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-sm font-medium mb-6 flex items-center gap-2"
             >
               <Award className="h-4 w-4 text-primary" />
@@ -134,9 +134,9 @@ export default function EducationSection() {
               {certificates.map((cert, index) => (
                 <motion.div
                   key={cert.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.8, delay: 0.3 + index * 0.15, ease: "easeOut" }}
                   className="p-4 bg-muted/50 rounded-lg"
                 >
                   <h4 className="text-sm font-medium">{cert.title}</h4>

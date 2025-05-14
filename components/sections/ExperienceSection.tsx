@@ -133,9 +133,9 @@ export default function ExperienceSection() {
 
       <div className="container mx-auto px-4 md:px-6 relative">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-12 text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
@@ -148,10 +148,10 @@ export default function ExperienceSection() {
           {experiences.map((experience, index) => (
             <motion.div
               key={experience.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative pl-6 mb-12 last:mb-0"
+              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 + index * 0.15, ease: "easeOut" }}
+              className="relative"
             >
               {/* Timeline line */}
               {index !== experiences.length - 1 && (

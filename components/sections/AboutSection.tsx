@@ -18,9 +18,9 @@ export default function AboutSection() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-12 text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
@@ -29,9 +29,9 @@ export default function AboutSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -100 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="space-y-6"
           >
             <div className="space-y-4">
@@ -59,9 +59,9 @@ export default function AboutSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 100 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="space-y-8"
           >
             {/* Languages */}

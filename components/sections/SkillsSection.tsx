@@ -93,9 +93,9 @@ export default function SkillsSection() {
 
       <div className="container mx-auto px-4 md:px-6 relative">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-12 text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
@@ -157,28 +157,27 @@ export default function SkillsSection() {
         </motion.div>
 
         {/* Skills Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12 max-w-3xl mx-auto">
-          {skills.map((skillGroup, groupIndex) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+          {skills.map((skillGroup, index) => (
             <motion.div
               key={skillGroup.category}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + groupIndex * 0.1 }}
-              className="space-y-4 p-6 rounded-lg bg-muted/50 backdrop-blur-sm border border-primary/10"
+              initial={{ opacity: 0, x: index === 0 ? -100 : 100 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.3 + index * 0.15, ease: "easeOut" }}
+              className="space-y-6"
             >
-              <div className="flex items-center gap-2">
-                <div className="text-primary">{skillGroup.icon}</div>
-                <h3 className="text-sm font-medium">{skillGroup.category}</h3>
-              </div>
-
-              <div className="space-y-3">
-                {skillGroup.items.map((skill, index) => (
+              <h3 className="text-sm font-medium flex items-center gap-2">
+                <span className="text-primary">{skillGroup.icon}</span>
+                {skillGroup.category}
+              </h3>
+              <div className="space-y-4">
+                {skillGroup.items.map((skill, skillIndex) => (
                   <motion.div
                     key={skill.name}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: index === 0 ? -100 : 100 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.4, delay: 0.3 + groupIndex * 0.1 + index * 0.05 }}
-                    className="space-y-1.5"
+                    transition={{ duration: 0.8, delay: 0.4 + skillIndex * 0.1, ease: "easeOut" }}
+                    className="space-y-2"
                   >
                     <div className="flex justify-between items-center">
                       <span className="text-xs font-medium">{skill.name}</span>
