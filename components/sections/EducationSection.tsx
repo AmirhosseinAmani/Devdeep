@@ -51,7 +51,7 @@ export default function EducationSection() {
     <section
       id="education"
       ref={ref}
-      className="py-20 md:py-28 bg-muted/50"
+      className="py-20 md:py-28 bg-background"
     >
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
@@ -64,54 +64,54 @@ export default function EducationSection() {
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {/* Education */}
           <div>
             <motion.h3
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-2xl font-bold mb-6 flex items-center gap-2"
+              className="text-sm font-medium mb-6 flex items-center gap-2"
             >
-              <GraduationCap className="h-6 w-6" />
+              <GraduationCap className="h-4 w-4 text-primary" />
               Academic Background
             </motion.h3>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               {education.map((item, index) => (
                 <motion.div
                   key={item.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.3 + index * 0.2 }}
-                  className="relative pl-8"
+                  transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                  className="relative pl-6"
                 >
                   {/* Timeline line */}
                   {index !== education.length - 1 && (
-                    <div className="absolute left-0 top-8 w-px h-full bg-border"></div>
+                    <div className="absolute left-0 top-6 w-px h-full bg-border/50"></div>
                   )}
                   
-                  {/* Timeline icon */}
-                  <div className="absolute left-0 top-1 -translate-x-1/2 flex items-center justify-center w-6 h-6 rounded-full bg-primary text-primary-foreground">
-                    {item.icon}
+                  {/* Timeline dot */}
+                  <div className="absolute left-0 top-1 -translate-x-1/2 flex items-center justify-center w-3 h-3 rounded-full bg-primary/20">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
                   </div>
                   
-                  <div>
-                    <h4 className="text-lg font-semibold">{item.institution}</h4>
-                    <p className="text-muted-foreground">{item.degree}</p>
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-medium">{item.institution}</h4>
+                    <p className="text-xs text-muted-foreground">{item.degree}</p>
                     
-                    <div className="flex flex-wrap gap-x-4 gap-y-2 mt-2 text-sm text-muted-foreground">
+                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
                       <span className="flex items-center gap-1">
-                        <Calendar className="h-3.5 w-3.5" />
+                        <Calendar className="h-3 w-3" />
                         {item.period}
                       </span>
                       <span className="flex items-center gap-1">
-                        <MapPin className="h-3.5 w-3.5" />
+                        <MapPin className="h-3 w-3" />
                         {item.location}
                       </span>
                     </div>
                     
-                    <p className="mt-2 text-sm">{item.description}</p>
+                    <p className="text-xs text-muted-foreground">{item.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -124,29 +124,29 @@ export default function EducationSection() {
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-2xl font-bold mb-6 flex items-center gap-2"
+              className="text-sm font-medium mb-6 flex items-center gap-2"
             >
-              <Award className="h-6 w-6" />
+              <Award className="h-4 w-4 text-primary" />
               Certifications
             </motion.h3>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {certificates.map((cert, index) => (
                 <motion.div
                   key={cert.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.3 + index * 0.2 }}
-                  className="border border-border rounded-lg p-5 bg-card"
+                  transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                  className="p-4 bg-muted/50 rounded-lg"
                 >
-                  <h4 className="text-lg font-semibold">{cert.title}</h4>
+                  <h4 className="text-sm font-medium">{cert.title}</h4>
                   <div className="flex justify-between items-center mt-1 mb-2">
-                    <span className="text-sm text-muted-foreground">{cert.issuer}</span>
+                    <span className="text-xs text-muted-foreground">{cert.issuer}</span>
                     <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">
                       {cert.date}
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground">{cert.description}</p>
+                  <p className="text-xs text-muted-foreground">{cert.description}</p>
                 </motion.div>
               ))}
             </div>

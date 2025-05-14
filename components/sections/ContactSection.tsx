@@ -10,7 +10,10 @@ import {
   Send, 
   Linkedin, 
   Instagram, 
-  Github
+  Github,
+  Globe,
+  Lightbulb,
+  Calendar
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -115,122 +118,147 @@ export default function ContactSection() {
     <section
       id="contact"
       ref={ref}
-      className="py-20 md:py-28 bg-muted"
+      className="py-20 md:py-28 bg-background relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 md:px-6">
+      {/* Background Design Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Gradient Orbs */}
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        
+        {/* Animated Circles */}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 border border-primary/10 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 border border-primary/10 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-          <div className="w-24 h-1 bg-primary mx-auto"></div>
-          <p className="mt-6 text-muted-foreground max-w-lg mx-auto">
-            Feel free to reach out if you want to collaborate, have questions, or just want to say hello!
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
+            Let's Create Something Amazing
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
           </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/60 mx-auto mt-4"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-card p-6 md:p-8 rounded-lg shadow-sm border border-border"
+            className="space-y-6"
           >
-            <h3 className="text-xl font-semibold mb-6">Send Me a Message</h3>
+            <div className="p-6 bg-muted/50 rounded-lg backdrop-blur-sm border border-primary/10">
+              <Form {...form}>
+                <form action="https://formsubmit.co/amiramani8384@gmail.com" method="POST" onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-xs font-medium">Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your name" {...field} className="bg-background/50" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="company"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-xs font-medium">Company (Optional)</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your company" {...field} className="bg-background/50" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
 
-            <Form {...form}>
-              <form action="https://formsubmit.co/amiramani8384@gmail.com" method="POST" onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-xs font-medium">Email</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your email" {...field} className="bg-background/50" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-xs font-medium">Phone</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your phone number" {...field} className="bg-background/50" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
                   <FormField
                     control={form.control}
-                    name="name"
+                    name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Name</FormLabel>
+                        <FormLabel className="text-xs font-medium">Message</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your name" {...field} />
+                          <Textarea 
+                            placeholder="Tell me about your project..." 
+                            className="min-h-[120px] resize-none bg-background/50"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
-                  <FormField
-                    control={form.control}
-                    name="company"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Company (Optional)</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your company" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your email" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
+                  <Button 
+                    type="submit" 
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center gap-2">
+                        <span className="animate-spin">⚡</span>
+                        Sending...
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-2">
+                        <Send className="h-4 w-4" />
+                        Send Message
+                      </span>
                     )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Phone</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your phone number" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Message</FormLabel>
-                      <FormControl>
-                        <Textarea 
-                          placeholder="How can I help you?" 
-                          className="min-h-[150px] resize-none"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <Button 
-                  type="submit" 
-                  className="w-full flex items-center gap-2"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                  <Send className="h-4 w-4" />
-                </Button>
-              </form>
-            </Form>
+                  </Button>
+                </form>
+              </Form>
+            </div>
           </motion.div>
 
           {/* Contact Information */}
@@ -240,31 +268,31 @@ export default function ContactSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="space-y-8"
           >
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
-              <div className="space-y-4">
-                {contactInfo.map((item, index) => (
-                  <a
-                    key={index}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-4 p-4 rounded-lg hover:bg-card/60 transition-colors"
-                  >
-                    <div className="bg-primary/10 text-primary p-2 rounded-full">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <h4 className="font-medium">{item.label}</h4>
-                      <p className="text-muted-foreground">{item.value}</p>
-                    </div>
-                  </a>
-                ))}
-              </div>
+            <div className="space-y-4">
+              {contactInfo.map((item, index) => (
+                <a
+                  key={index}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors group backdrop-blur-sm border border-primary/10"
+                >
+                  <div className="text-primary group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-sm group-hover:text-primary transition-colors">{item.label}</h4>
+                    <p className="text-sm text-muted-foreground">{item.value}</p>
+                  </div>
+                </a>
+              ))}
             </div>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Connect With Me</h3>
+            <div className="p-6 bg-muted/50 rounded-lg backdrop-blur-sm border border-primary/10">
+              <h3 className="text-sm font-medium mb-4 flex items-center gap-2">
+                <Globe className="h-4 w-4 text-primary" />
+                Connect With Me
+              </h3>
               <div className="flex flex-wrap gap-3">
                 {socialLinks.map((link, index) => (
                   <Tooltip key={index}>
@@ -273,9 +301,11 @@ export default function ContactSection() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-card p-3 rounded-full border border-border hover:border-primary hover:text-primary transition-colors"
+                        className="p-2 rounded-lg hover:bg-background/50 transition-colors group backdrop-blur-sm border border-primary/10"
                       >
-                        {link.icon}
+                        <span className="text-primary group-hover:scale-110 transition-transform">
+                          {link.icon}
+                        </span>
                         <span className="sr-only">{link.label}</span>
                       </a>
                     </TooltipTrigger>
@@ -285,19 +315,28 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="p-6 bg-card border border-border rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">Let's Work Together</h3>
-              <p className="text-muted-foreground mb-6">
+            <div className="p-6 bg-muted/50 rounded-lg backdrop-blur-sm border border-primary/10">
+              <h3 className="text-sm font-medium mb-2 flex items-center gap-2">
+                <Lightbulb className="h-4 w-4 text-primary" />
+                Let's Work Together
+              </h3>
+              <p className="text-sm text-muted-foreground mb-4">
                 I'm currently available for freelance work and exciting project collaborations. 
                 If you have a project in mind, let's discuss how we can bring it to life.
               </p>
               
               <div className="flex gap-3">
-                <Button variant="outline" onClick={() => window.open('https://calendly.com/amiramani8384', '_blank')}>
-                  Schedule a Call
+                <Button variant="outline" size="sm" onClick={() => window.open('https://calendly.com/amiramani8384', '_blank')} className="group">
+                  <span className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                    Schedule a Call
+                  </span>
                 </Button>
-                <Button onClick={() => window.open('https://github.com/AmirhosseinAmani', '_blank')}>
-                  View My Work
+                <Button size="sm" onClick={() => window.open('https://github.com/AmirhosseinAmani', '_blank')} className="group">
+                  <span className="flex items-center gap-2">
+                    <Github className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                    View My Work
+                  </span>
                 </Button>
               </div>
             </div>
