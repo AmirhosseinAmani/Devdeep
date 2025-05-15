@@ -20,7 +20,7 @@ const education = [
     institution: "Allameh Helli School",
     degree: "High School Diploma",
     period: "2009 - 2022",
-    location: "Istanbul, Turkey",
+    location: "Tabriz, Iran",
     description: "Specialized in mathematics and computer science with honors.",
     icon: <GraduationCap className="h-6 w-6" />
   }

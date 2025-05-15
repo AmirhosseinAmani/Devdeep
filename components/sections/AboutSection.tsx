@@ -51,10 +51,12 @@ export default function AboutSection() {
             </div>
 
             <div className="pt-4">
-              <Button className="flex items-center gap-2" size="sm">
-                <FileText size={16} />
-                Download CV
-              </Button>
+              <a href="/my-cv.pdf" download="Amirhossein_Amani_CV.pdf">
+                <Button className="flex items-center gap-2" size="sm">
+                  <FileText size={16} />
+                  Download CV
+                </Button>
+              </a>
             </div>
           </motion.div>
 
